@@ -22,6 +22,8 @@ public class AppConfig {
     @Bean
     public OrderService orderService() {
         System.out.println("call AppConfig.orderService");
+        // @Configuration 을 붙이지 않으면 아래 주입된 메소드 들은 스프링 빈이 아닌 일반 객체로 전달된다.
+        // 그리고 @Bean 이 붙은 메소드는 스프링 빈으로 등록은 되나 싱글톤이 보장되지 않는다!!!!
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
 
